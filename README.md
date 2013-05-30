@@ -86,17 +86,19 @@ Configure CJDNS
 
 Check for TUN device:
 
-```
+```bash
 cat /dev/net/tun # If it says, "cat: /dev/net/tun: File descriptor in bad state", move on.
 ```
 
 Otherwise, if /dev/net/tun doesn't exist, make one:
 
-```
+```bash
 sudo mkdir /dev/net ; sudo mknod /dev/net/tun c 10 200 && sudo chmod 0666 /dev/net/tun
 ```
 
 If you run into any problems, refer to [this section](https://github.com/cjdelisle/cjdns/tree/named-pipes#0-make-sure-youve-got-the-stuff) in the CJDNS repo.
+
+#### More [advanced configuration](https://github.com/cjdelisle/cjdns/blob/master/rfcs/configure.md)
 
 #### To Do:
 
@@ -107,17 +109,27 @@ If you run into any problems, refer to [this section](https://github.com/cjdelis
 Configure CCNX
 ==============
 
-#### Initialize CCNx Repo
+#### Setup Repository with CCNR
 
-TODO: Initializing CCNx Repo
+Copy the example repository configuration to the repository directory.
+
+```bash
+cp config/ccnr.conf.example repo/config
+```
 
 Nei.ghbor.Net Ground - Services
 ===============================
 
 #### CCNx
 
+Services
 - `ccnd` - runs CCNx in the foreground
-- `ccndstart` - starts CCNx in the background
+- `ccndstart` - starts CCNx in the background.  (doesn't work with foreman)
+- `ccnr` - starts the CCN Repo Daemon.  Uses `pwd` as the repo path, or the value of `$CCNR_DIRECTORY`
+
+Utils
+- `ccngetfile` - find a file via CCNx (sends an interest message)
+- `ccnputfile` - put target file in your repository
 
 #### CJDNS
 
@@ -145,8 +157,12 @@ All Foreman processes must run in the foreground.  Fore example, this means you 
 1. `ruby -v; gem -v`
 1. `gem install bundler`
 1. `bundle install`
-1. `cp Procfile.example Procfile`
-1. `foreman start`
+1. `cp config/Procfile.example config/Procfile`
+1. `CCNR_DIRECTORY=repo foreman start -f config/Procfile`
+
+Note:
+
+> You must specify absolute path for CCNR_DIRECTORY when using foreman start with ccnr.
 
 #### With rc.d
 
