@@ -18,7 +18,7 @@ Once your Ground stack is up and running, you'll want to find some Neighbors to 
 
 
 Install
-=====
+=======
 
 Nei.ghbor.Net Ground has a few dependencies to install:
 
@@ -34,6 +34,7 @@ Use this [Gist](https://gist.github.com/dcunited001/5626815) to Install CCNx & C
 
 1. Install CJDNS Dependencies
   - `sudo apt-get install cmake git build-essential`
+  - [NACL - Networking and Cryptography Library](http://nacl.cr.yp.to/install.html) is required - `sudo apt-get libnacl-dev`?
 1. Install CCNx Dependencies (install the following packages with apt-get)
   - ant1.8
   - autoconf
@@ -74,4 +75,55 @@ Use this [Gist](https://gist.github.com/dcunited001/5626815) to Install CCNx & C
 - TODO: build instructions
 
 Config
-=====
+======
+
+#### Setup CJDNS Routes Conf
+
+- Setup CJD Routes File with `cjdroute --genconf > cjdroute.conf`
+- Refer to cjdroute.conf.example (cjdroute.conf is ignored in the project)
+
+#### Initialize CCNx Repo
+
+TODO: Initializing CCNx Repo
+
+Nei.ghbor.Net Services
+======================
+
+#### CCNx
+
+- `ccnd` - runs CCNx in the foreground
+- `ccndstart` - starts CCNx in the background
+
+#### CJDNS
+
+- `cjdroute` - run without options for help
+- `cjdroute < cjdroute.conf` - start cjd
+
+Starting Services
+=================
+
+Different ways to start services:
+
+- Install Ruby/Bundler/Foreman & `foreman start`
+- Configure rc.d (Raspbian Wheezy)
+- Configure systemd (Raspbian Arch)
+
+#### With Foreman
+
+Foreman is by far the easiest route to take, but may not be ideal for production.
+
+All Foreman processes must run in the foreground.  Fore example, this means you must use `ccnd` instead of `ccndstart`.
+
+1. `ruby -v; gem -v`
+1. `gem install bundler`
+1. `bundle install`
+1. `cp Procfile.example Procfile`
+1. `foreman start`
+
+#### With rc.d
+
+TODO: configuring CCNx/CJDNS with rc.d
+
+#### With systemd
+
+TODO: configuring CCNx/CJDNS with systemd
