@@ -98,6 +98,12 @@ sudo mkdir /dev/net ; sudo mknod /dev/net/tun c 10 200 && sudo chmod 0666 /dev/n
 
 If you run into any problems, refer to [this section](https://github.com/cjdelisle/cjdns/tree/named-pipes#0-make-sure-youve-got-the-stuff) in the CJDNS repo.
 
+#### To Do:
+
+- TODO: document non-root install
+- TODO: fix Procfile.dev to avoid sudo
+- TODO: fix sudo conflicts with /etc/net/tun
+
 Configure CCNX
 ==============
 
