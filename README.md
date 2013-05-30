@@ -105,8 +105,8 @@ Configure CCNX
 
 TODO: Initializing CCNx Repo
 
-Nei.ghbor.Net Services
-======================
+Nei.ghbor.Net Ground - Services
+===============================
 
 #### CCNx
 
@@ -115,8 +115,11 @@ Nei.ghbor.Net Services
 
 #### CJDNS
 
-- `cjdroute` - run without options for help
-- `cjdroute < cjdroute.conf` - start cjd
+- `sudo cjdroute` - run without options for help
+- `sudo cjdroute < cjdroute.conf` - start cjd, specifying config file
+- `sudo cjdroute < config/cjdroute.conf > log/cjdroute.log` - with log (won't work with foreman, i don't think)
+
+To start `cjdroute` as a non-root user, read [this](https://github.com/cjdelisle/cjdns/tree/named-pipes#start-cjdroute-as-non-root-user)
 
 Starting Services
 =================
