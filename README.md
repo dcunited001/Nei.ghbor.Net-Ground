@@ -1,0 +1,77 @@
+Nei.ghbor.Net Ground
+====================
+
+Ground is the fundamental network for the Nei.ghbor.Net project. A Ground Node consists of two parts:
+
+* A CJDNS daemon - provides encrypted routing over local mesh networks and tunneling over the existing IP infrastructure.
+* A CCNx daemon - provides content-based routing and caching for efficient distrobution of data.
+
+To install this protocol stack, you would be well served to be running Linux or OSX
+
+for CJDNS installation instructions, see that projects Readme
+
+for CCNx, see http://blog.rungeek.com/post/1711470902/project-ccnx-how-to (ubuntu)
+
+We are working on brew scripts for MacOS and apt repos for ubuntu to ease this process.
+
+Once your Ground stack is up and running, you'll want to find some Neighbors to connect with... see Nei.ghbor.Net-Keystone
+
+
+Install
+=====
+
+Nei.ghbor.Net Ground has a few dependencies to install:
+
+#### On OSX - Use Brew
+
+Use this [Gist](https://gist.github.com/dcunited001/5626815) to Install CCNx & CJDNS
+
+- Please report any problems you have with this gist.
+- Or compile CCNx & CJDNS from source
+- TODO: update gist to include the correct branch of CJDNS
+
+#### On Linux - Build From Source
+
+1. Install CJDNS Dependencies
+  - `sudo apt-get install cmake git build-essential`
+1. Install CCNx Dependencies (install the following packages with apt-get)
+  - ant1.8
+  - autoconf
+  - libssl-dev
+  - libexpat-dev
+  - libpcap-dev
+  - libecryptfs0
+  - libxml2-utils
+  - automake
+  - gawk
+  - gcc
+  - g++
+  - git-core
+  - pkg-config
+  - libpcre3-dev
+  - openjdk-6-jre-lib
+1. Download CCNx Source
+  - Download latest stable here - [CCNx 0.7.2 Tarball](http://www.ccnx.org/releases/ccnx-0.7.2.tar.gz) - 5/20/13 - [SHA1](http://www.ccnx.org/releases/ccnx-0.7.2.tar.gz.SHA1)
+  - Or Download 0.7.2 tag with `git clone git@github.com:ProjectCCNx/ccnx --branch ccnx-0.7.2 ccnx-0.7.2` (then checkout a new local branch, since you will be in a detached HEAD)
+  - Or Download latest updates with `git clone git@github.com:ProjectCCNx/ccnx.git` (not recommended)
+1. Build CCNx
+  - `cd ccnx`
+  - `make`
+  - `make install`
+  - Don't forget to update $PATH in your shell profile with the CCNx "bin" directory.
+1. Download CJDNS Source
+  - Download latest updates with `git clone git@github.com:cjdelisle/cjdns`
+  - OSX Users must download the [named-pipes](https://github.com/cjdelisle/cjdns/tree/named-pipes) branch with `git clone git@github.com:cjdelisle/cjdns --branch named-pipes`
+1. Build CJDNS
+  - `cd cjdns`
+  - `./do`
+  - Don't forget to update $PATH in your shell profile with the CJDNS "bin" directory.
+
+#### On Debian Wheezy (Raspbian)
+
+- Build CCNx/CJDNS from source
+- While you wait, ask a friend about cross-compilers.
+- TODO: build instructions
+
+Config
+=====
