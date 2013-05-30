@@ -1,0 +1,2 @@
+ccnx: ccnd
+cjdroute: sudo ./cjdroute < config/cjdroute.conf
