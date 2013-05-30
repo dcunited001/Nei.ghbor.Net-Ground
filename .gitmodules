@@ -1,6 +1,6 @@
-[submodule "ccnx-0.7.2"]
-	path = src/ccnx-0.7.2
-	url = https://github.com/ProjectCCNx/ccnx
-[submodule "ccnx-master"]
+[submodule "src/ccnx-master"]
 	path = src/ccnx-master
+	url = https://github.com/ProjectCCNx/ccnx
+[submodule "src/ccnx-0.7.2"]
+	path = src/ccnx-0.7.2
 	url = https://github.com/ProjectCCNx/ccnx
