@@ -1,0 +1,158 @@
+{
+    // Private key:
+    // Your confidentiality and data integrity depend on this key, keep it secret!
+    "privateKey": "176a775cd9ce04b43f71c9160320cf78400009c16c452c81fd034f87f0029987",
+
+    // This key corresponds to the public key and ipv6 address:
+    "publicKey": "0uyz4vv27kj3jxfjbv7288k90fukgzp74jbt5nm6djhy43w3g1h0.k",
+    "ipv6": "fca8:cdb5:be25:8e6c:49e0:22d4:b461:67d4",
+
+    // Anyone connecting and offering these passwords on connection will be allowed.
+    //
+    // WARNING: Currently there is no key derivation done on the password field,
+    //          DO NOT USE A PASSWORD HERE use something which is truly random and
+    //          cannot be guessed.
+    // Including a username in the beginning of the password string is encouraged
+    // to aid in remembering which users are who.
+    //
+    "authorizedPasswords":
+    [
+        // A unique string which is known to the client and server.
+        {"password": "dmhsbkp2z07vh0mnmytlgsq086z62gk"}
+
+        // More passwords should look like this.
+        // {"password": "9647k47szjxvhyv627xwnbgcg29bx4p"},
+        // {"password": "lvw9qjh0mps7k9hqrv2klzqhp090k3k"},
+        // {"password": "rs6cz21q9ummhj61wvsc8h1s736gv91"},
+
+        // Below is an example of your connection credentials
+        // that you can give to other people so they can connect
+        // to you using your default password (from above) 
+        // Adding a unique password for each user is advisable
+        // so that leaks can be isolated. 
+        //
+        // "your.external.ip.goes.here:50206":{"password":"dmhsbkp2z07vh0mnmytlgsq086z62gk","publicKey":"0uyz4vv27kj3jxfjbv7288k90fukgzp74jbt5nm6djhy43w3g1h0.k"}
+    ],
+
+    // Settings for administering and extracting information from your router.
+    // This interface provides functions which can be called through a UDP socket.
+    // See admin/Readme.md for more information about the API and try:
+    // ./contrib/python/cexec 'functions'
+    // For a list of functions which can be called.
+    // For example:  ./contrib/python/cexec 'memory()'
+    // will call a function which gets the core's current memory consumption.
+    // ./contrib/python/cjdnslog
+    // is a tool which uses this admin interface to get logs from cjdns.
+    "admin":
+    {
+        // Port to bind the admin RPC server to.
+        "bind": "127.0.0.1:11234",
+
+        // Password for admin RPC server.
+        "password": "ztdm9gh03w7wsfsrrbh9pkgkm0vwlcz"
+    },
+
+
+
+
+    // Interfaces to connect to the switch core.
+    "interfaces":
+    {
+        // The interface which connects over UDP/IP based VPN tunnel.
+        "UDPInterface":
+        [
+            {
+                // Bind to this port.
+                "bind": "0.0.0.0:50206",
+
+                // Nodes to connect to.
+                "connectTo":
+                {
+                    // Add connection credentials here to join the network
+                    // Ask somebody who is already connected.
+                }
+            }
+        ]
+    },
+
+    // Configuration for the router.
+    "router":
+    {
+        // The interface which is used for connecting to the cjdns network.
+        "interface":
+        {
+            // The type of interface (only TUNInterface is supported for now)
+            "type": "TUNInterface"
+        },
+
+        // System for tunneling IPv4 and ICANN IPv6 through cjdns.
+        // This is using the cjdns switch layer as a VPN carrier.
+        "ipTunnel":
+        {
+            // Nodes allowed to connect to us.
+            // When a node with the given public key connects, give them the
+            // ip4 and/or ip6 addresses listed.
+            "allowedConnections":
+            [
+                // {
+                //     "publicKey": "f64hfl7c4uxt6krmhPutTheRealAddressOfANodeHere7kfm5m0.k",
+                //     "ip4Address": "192.168.1.24",
+                //     "ip6Address": "2001:123:ab::10"
+                // },
+
+                // It's ok to only specify one address.
+                // {
+                //     "publicKey": "ydq8csdk8p8ThisIsJustAnExampleAddresstxuyqdf27hvn2z0.k",
+                //     "ip4Address": "192.168.1.24",
+                //     "ip6Address": "2001:123:ab::10"
+                // }
+            ],
+
+            "outgoingConnections":
+            [
+                // Connect to one or more machines and ask them for IP addresses.
+                // "6743gf5tw80ExampleExampleExampleExamplevlyb23zfnuzv0.k",
+                // "pw9tfmr8pcrExampleExampleExampleExample8rhg1pgwpwf80.k",
+                // "g91lxyxhq0kExampleExampleExampleExample6t0mknuhw75l0.k"
+            ]
+        }
+    },
+
+    // Tear down inactive CryptoAuth sessions after this number of seconds
+    // to make them more forgiving in the event that they become desynchronized.
+    "resetAfterInactivitySeconds": 100,
+
+    // Save the pid of the running process to this file.
+    // If this file cannot be opened for writing, the router will not start.
+    //"pidFile": "cjdroute.pid",
+
+    // Dropping permissions.
+    "security":
+    [
+        // Set number of open files to zero, in Linux, this will succeed even if
+        // files are already open and will not allow any files to be opened for the
+        // duration of the program's operation.
+        // Most security exploits require the use of files.
+        "nofiles",
+
+        // Change the user id to this user after starting up and getting resources.
+        {
+            "setuser": "nobody",
+
+            // Exempt the Angel process from setting userId, the Angel is a small
+            // isolated piece of code which exists outside of the core's strict
+            // sandbox but does not handle network traffic.
+            // This must be enabled for IpTunnel to automatically set IP addresses
+            // for the TUN device.
+            "exemptAngel": 1
+        }
+     ],
+
+    // Logging
+    "logging":
+    {
+        // Uncomment to have cjdns log to stdout rather than making logs available
+        // via the admin socket.
+        // "logTo":"stdout"
+    }
+}
