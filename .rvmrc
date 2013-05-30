@@ -1,0 +1,5 @@
+rvm use --create 1.9.3-head@Nei.ghbor.Net-Ground
+
+# if possible, should be 1.8.7 compatible to better support devices like Raspberry Pi
+# rvm use --create 1.8.7-p371@Nei.ghbor.Net-Ground
+
