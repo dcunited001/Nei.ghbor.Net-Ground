@@ -74,13 +74,32 @@ Use this [Gist](https://gist.github.com/dcunited001/5626815) to Install CCNx & C
 - While you wait, ask a friend about cross-compilers.
 - TODO: build instructions
 
-Config
-======
+Configure CJDNS
+===============
 
 #### Setup CJDNS Routes Conf
 
 - Setup CJD Routes File with `cjdroute --genconf > cjdroute.conf`
 - Refer to cjdroute.conf.example (cjdroute.conf is ignored in the project)
+
+#### Ensure [TUN/TAP](https://github.com/cjdelisle/cjdns/tree/named-pipes#0-make-sure-youve-got-the-stuff) virtual network devices are available
+
+Check for TUN device:
+
+```
+cat /dev/net/tun # If it says, "cat: /dev/net/tun: File descriptor in bad state", move on.
+```
+
+Otherwise, if /dev/net/tun doesn't exist, make one:
+
+```
+sudo mkdir /dev/net ; sudo mknod /dev/net/tun c 10 200 && sudo chmod 0666 /dev/net/tun
+```
+
+If you run into any problems, refer to [this section](https://github.com/cjdelisle/cjdns/tree/named-pipes#0-make-sure-youve-got-the-stuff) in the CJDNS repo.
+
+Configure CCNX
+==============
 
 #### Initialize CCNx Repo
 
