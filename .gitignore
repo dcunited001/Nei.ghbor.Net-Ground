@@ -1,5 +1,6 @@
 config/cjdroute.conf
 config/Procfile
+.env
 log/*
 !log/.gitkeep
 repo/*
