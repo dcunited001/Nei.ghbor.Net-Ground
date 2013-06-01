@@ -1,2 +1,3 @@
 ccnx: ccnd
-cjdroute: sudo `which cjdroute` < config/cjdroute.conf
+ccnr: ccnr
+#cjdroute: sudo `which cjdroute` < config/cjdroute.conf
