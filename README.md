@@ -20,7 +20,7 @@ Once your Ground stack is up and running, you'll want to find some Neighbors to 
 Install
 =======
 
-Nei.ghbor.Net Ground has a few dependencies to install:
+Nei.ghbor.Net Ground has a few dependencies to install.  At this time, CJDNS is optional and requires additional configuration.
 
 #### On OSX - Use Brew
 
@@ -74,8 +74,8 @@ Use this [Gist](https://gist.github.com/dcunited001/5626815) to Install CCNx & C
 - While you wait, ask a friend about cross-compilers.
 - TODO: build instructions
 
-Configure CJDNS
-===============
+Configure CJDNS (optional)
+==========================
 
 #### Setup CJDNS Routes Conf
 
