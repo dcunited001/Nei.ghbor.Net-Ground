@@ -158,6 +158,7 @@ All Foreman processes must run in the foreground.  Fore example, this means you 
 1. `gem install bundler`
 1. `bundle install`
 1. `cp config/Procfile.example config/Procfile`
+1. echo 'CCNR_DIRECTORY=repo' >> .env # or `cp .env.example .env`
 1. `CCNR_DIRECTORY=repo foreman start -f config/Procfile`
 
 Note:
