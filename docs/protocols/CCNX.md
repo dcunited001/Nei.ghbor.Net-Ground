@@ -44,9 +44,11 @@ Use apt-gem or yum to install these:
 
 #### [CCNx Con 2012](http://www.ccnx.org/ccnxcon2012/)
 
-- [Slides (PDF's)](http://www.ccnx.org/ccnxcon2012/program/)
+- [Program & Slides](http://www.ccnx.org/ccnxcon2012/program/)
 
-#### CCNx Con 2011(http://www.ccnx.org/ccnxcon2011/)
+#### [CCNx Con 2011](http://www.ccnx.org/ccnxcon2011/)
+
+- [Program & Slides](http://www.ccnx.org/ccnxcon2011program/)
 
 #### Sigcomm (Helsinki)
 
